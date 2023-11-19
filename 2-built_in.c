@@ -13,14 +13,14 @@ void pop(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: usage: pop\n", line_number);
 		exit_f();
 	}
-	if (temp == NULL)
+	if (*stack == NULL || stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n",
 				line_number);
 		exit_f();
 	}
 	*stack = temp->next;
-	if ((*stack) != NULL)
+	if ((*stack)->prev != NULL)
 		(*stack)->prev = NULL;
 	free(temp);
 	temp = NULL;
