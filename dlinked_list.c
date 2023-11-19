@@ -48,3 +48,21 @@ stack_t *add_dnodeint(stack_t **head, int n)
 	}
 	return (new);
 }
+
+/**
+ * dlistint_len - count number of elements in a linked stack_t list.
+ * @h: head of the linked stack_t list.
+ * Return: number of elements in a linked stack_t list.
+ */
+size_t dlistint_len(stack_t *h)
+{
+	size_t n = 0;
+	const stack_t *temp = h;
+
+	while (temp != NULL)
+	{
+		temp = temp->next;
+		n++;
+	}
+	return (n);
+}

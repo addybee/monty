@@ -63,6 +63,7 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 char **get_argv(char *command);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 char *_strdup(char *str);
@@ -73,5 +74,6 @@ extern global_t vars;
 void exit_f(void);
 void free_dlistint(stack_t *head);
 stack_t *add_dnodeint(stack_t **head, int n);
+size_t dlistint_len(stack_t *h);
 void *_realloc(void *ptr, unsigned int prev_size, unsigned int new_size);
 #endif

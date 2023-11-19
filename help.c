@@ -7,11 +7,12 @@
 int parse_op(char *code)
 {
 	int k;
-	instruction_t arr_t[5] = {
+	instruction_t arr_t[6] = {
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"swap", swap},
 		{NULL, NULL}
 	};
 
