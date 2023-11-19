@@ -36,7 +36,7 @@ void pop(stack_t **stack, unsigned int line_number)
  */
 void swap(stack_t **stack, unsigned int line_number)
 {
-	int k;
+	stack_t *tempk;
 
 	if (arrlen_t(vars.arg) != 1)
 	{
@@ -49,8 +49,11 @@ void swap(stack_t **stack, unsigned int line_number)
 				line_number);
 		exit_f();
 	}
-	k = (*stack)->n;
-	(*stack)->n = (*stack)->next->n;
-	(*stack)->next->n = k;
+	tempk = *stack;
+	*stack = (*stack)->next;
+	tempk->next = (*stack)->next;
+	tempk->prev = *stack;
+	(*stack)->next = tempk;
+	(*stack)->prev = NULL;
 }
 
