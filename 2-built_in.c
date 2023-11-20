@@ -40,7 +40,7 @@ void swap(stack_t **stack, unsigned int line_number)
 
 	if (arrlen_t(vars.arg) != 1)
 	{
-		fprintf(stderr, "L%u: usage: pop\n", line_number);
+		fprintf(stderr, "L%u: usage: swap", line_number);
 		exit_f();
 	}
 	if (dlistint_len(*stack) < 2)
@@ -56,4 +56,38 @@ void swap(stack_t **stack, unsigned int line_number)
 	(*stack)->next = tempk;
 	(*stack)->prev = NULL;
 }
+/**
+ * add - adds the top two elements of the stack.
+ * @stack: pointer to pointer to head of the stack
+ * @line_number: the line number
+ */
+void add(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
 
+	if (arrlen_t(vars.arg) != 1)
+	{
+		fprintf(stderr, "L%u: usage: pop\n", line_number);
+		exit_f();
+	}
+	if (dlistint_len(*stack) < 2)
+	{
+		fprintf(stderr, "L%u:  can't add, stack too short\n",
+				line_number);
+		exit_f();
+	}
+	temp = (*stack)->next;
+	temp->n += (*stack)->n;
+	pop(stack, line_number);
+}
+
+/**
+ * nop -  doesn’t do anything.
+ * @stack: pointer to pointer to head of the stack
+ * @line_number: the line number
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
