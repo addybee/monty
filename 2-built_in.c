@@ -8,7 +8,7 @@ void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 
-	if (arrlen_t(vars.arg) != 1)
+	if (arrlen_t(vars.arg) < 1)
 	{
 		fprintf(stderr, "L%u: usage: pop\n", line_number);
 		exit_f();
@@ -38,7 +38,7 @@ void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tempk;
 
-	if (arrlen_t(vars.arg) != 1)
+	if (arrlen_t(vars.arg) < 1)
 	{
 		fprintf(stderr, "L%u: usage: swap", line_number);
 		exit_f();
@@ -65,7 +65,7 @@ void add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
-	if (arrlen_t(vars.arg) != 1)
+	if (arrlen_t(vars.arg) < 1)
 	{
 		fprintf(stderr, "L%u: usage: pop\n", line_number);
 		exit_f();
