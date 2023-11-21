@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 	FILE *fd = check_file(argc, argv);
 
 	vars.fd = fd;
-	while ( _getline(&vars.buffer, &input_len, fd) != -1)
+	while (_getline(&vars.buffer, &input_len, fd) != -1)
 	{
 		vars.l_num++;
 		str_strip(vars.buffer);
@@ -68,6 +68,7 @@ int main(int argc, char **argv)
 		vars.buffer = NULL;
 		vars.arg = NULL;
 	}
+	free(vars.buffer);
 	fclose(fd);
 	free_dlistint(vars.head);
 	return (0);
