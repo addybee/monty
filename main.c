@@ -42,18 +42,18 @@ FILE *check_file(int argc, char *argv[])
 int main(int argc, char **argv)
 {
 	size_t input_len = 0;
-	ssize_t read_byte = 0;
 	FILE *fd = check_file(argc, argv);
 
 	vars.fd = fd;
-	read_byte = _getline(&vars.buffer, &input_len, fd);
-	while (read_byte != -1)
+	while ( _getline(&vars.buffer, &input_len, fd) != -1)
 	{
 		vars.l_num++;
 		str_strip(vars.buffer);
-		if (*vars.buffer == '\0')
+		if (strlen(vars.buffer) <= 0)
 		{
-			exit_f();
+			free(vars.buffer);
+			vars.buffer = NULL;
+			continue;
 		}
 		vars.arg = get_argv(vars.buffer);
 
@@ -67,9 +67,7 @@ int main(int argc, char **argv)
 		free_t(vars.arg);
 		vars.buffer = NULL;
 		vars.arg = NULL;
-		read_byte = _getline(&vars.buffer, &input_len, fd);
 	}
-	free(vars.buffer);
 	fclose(fd);
 	free_dlistint(vars.head);
 	return (0);

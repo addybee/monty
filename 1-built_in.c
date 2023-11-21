@@ -8,7 +8,7 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
 
-	if (!vars.arg || arrlen_t(vars.arg) != 2 || !isInteger(vars.arg[1]))
+	if (!vars.arg || arrlen_t(vars.arg) < 2 || !isInteger(vars.arg[1]))
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit_f();
@@ -29,7 +29,7 @@ void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 
-	if (arrlen_t(vars.arg) != 1)
+	if (arrlen_t(vars.arg) < 1)
 	{
 		fprintf(stderr, "L%u: usage: pall\n", line_number);
 		exit_f();
@@ -67,7 +67,7 @@ void exit_f(void)
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
-	if (arrlen_t(vars.arg) != 1)
+	if (arrlen_t(vars.arg) < 1)
 	{
 		fprintf(stderr, "L%u: usage: pall\n", line_number);
 		exit_f();
